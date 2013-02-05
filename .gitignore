@@ -1,0 +1,12 @@
+# git ignore file
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.log
+*.DS_Store
+*.DS_Store?
+bin/**/*
+obj/**/*
