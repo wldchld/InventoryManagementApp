@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement
 {
-    class DatabaseManagement
+    class DatabaseManager
     {
     }
 }
