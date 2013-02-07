@@ -24,5 +24,20 @@ namespace InventoryManagement
         {
             InitializeComponent();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Material mat = new Material(materialT.Text, Double.Parse(quantityT.Text));
+            shoplist.AddToList(mat);
+
+            tBox.Clear();
+            List<Material> content = shoplist.Content;
+            for (int i = 0; i < content.Count; i++)
+            {
+                tBox.Text += content[i] + "\n";
+            }
+        }
+
+        private static ShoppingList shoplist = new ShoppingList();
     }
 }
