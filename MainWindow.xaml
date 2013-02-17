@@ -1,12 +1,114 @@
-﻿<Window x:Class="InventoryManagement.MainWindow"
+﻿<Window x:Name="InventoryManagement" 
+        x:Class="InventoryManagement.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="292.708" Width="431.25">
-    <Grid Margin="0,0,32,30">
-        <TextBox x:Name="materialT" HorizontalAlignment="Left" Height="23" Margin="22,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="quantityT" HorizontalAlignment="Left" Height="23" Margin="147,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="22,49,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <TextBox x:Name="tBox" HorizontalAlignment="Left" Height="160" Margin="22,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245"/>
+        Title="Inventory Management" 
+        Loaded="InventoryManagement_Loaded" 
+        MinHeight="350" 
+        MinWidth="400"> 
+    <TabControl>
+        <TabItem x:Name="MainWindowTabInventory" Header="Inventory">
+            <Grid Background="#FFFFFFFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="InventoryListPanel" Grid.Column="0">
+                    <ComboBox x:Name="GroupFilter">
+                    </ComboBox>
+                    <TextBox x:Name="SearchFilter" TextAlignment="Right" Text="Search.." Foreground="Gray" LostFocus="SearchFilter_LostFocus" GotFocus="SearchFilter_GotFocus" TextChanged="SearchFilter_TextChanged">
+                    </TextBox>
+                    <ListView x:Name="InventoryItemList" MinHeight="200" SelectionChanged="InventoryItemList_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel x:Name="InventoryItemPanel" Grid.Column="1">
+                    <StackPanel x:Name="ItemName" Orientation="Horizontal">
+                        <Label x:Name="ItemNameHeader" Content="Name:">
+                        </Label>
+                        <Label x:Name="ItemNameContent" Content="">                            
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemDescription" Orientation="Horizontal">
+                        <Label x:Name="ItemDescriptionHeader" Content="Description:">
+                        </Label>
+                        <Label x:Name="ItemDescriptionContent" Content="">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemGroup" Orientation="Horizontal">
+                        <Label x:Name="ItemGroupHeader" Content="Group:">
+                        </Label>
+                        <Label x:Name="ItemGroupContent" Content="">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemQuantity" Orientation="Horizontal">
+                        <Label x:Name="ItemQuantityHeader" Content="Quantity:">
+                        </Label>
+                        <Button x:Name="DecreaseQuantity" Content="   -   " Click="DecreaseQuantity_Click">                            
+                        </Button>
+                        <Label x:Name="ItemQuantityContent" Content="0">
+                        </Label>
+                        <Button x:Name="IncreaseQuantity" Content="   +   " Click="IncreaseQuantity_Click">
+                        </Button>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemUnit" Orientation="Horizontal">
+                        <Label x:Name="ItemUnitHeader" Content="Unit:">
+                        </Label>
+                        <Label x:Name="ItemUnitContent" Content="">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemPrice" Orientation="Horizontal">
+                        <Label x:Name="ItemPriceHeader" Content="Price:">
+                        </Label>
+                        <Label x:Name="ItemPriceContent" Content="">
+                        </Label>
+                        <Label x:Name="ItemPriceUnit" Content="">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemIsInfinite" Orientation="Horizontal">
+                        <Label x:Name="ItemIsInfiniteHeader" Content="Infinite:">
+                        </Label>
+                        <Label x:Name="ItemIsInfiniteContent" Content="">
+                        </Label>
+                    </StackPanel>
+                    
+                    <StackPanel x:Name="ItemLastModified" Orientation="Horizontal">
+                        <Label x:Name="ItemLastModifiedHeader" Content="Last modified:">
+                        </Label>
+                        <Label x:Name="ItemLastModifiedContent" Content="">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemBestBefore" Orientation="Horizontal">
+                        <Label x:Name="ItemBestBeforeHeader" Content="Best before:">
+                        </Label>
+                        <Label x:Name="ItemBestBeforeContent" Content="">
+                        </Label>
+                    </StackPanel>
+                    <StackPanel x:Name="ItemEdit" Orientation="Horizontal">
+                        <Button x:Name="EditButton" Content="   Edit   " Click="EditButton_Click">                            
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
 
-    </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="MainWindowTabRecipies" Header="Recipies">
+            <Grid Background="#FFFFFFFF">
+                
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="MainWindowTabShoppingList" Header="Shopping list">
+            <Grid Background="#FFFFFFFF">
+                
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="MainWindowTabAdvancedSearch" Header="Advanced search">
+            <Grid Background="#FFFFFFFF">
+                
+            </Grid>
+        </TabItem>
+        <TabItem x:Name="MainWindowTabManageInventory" Header="Manage inventory">
+            <Grid Background="#FFFFFFFF">
+
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>
