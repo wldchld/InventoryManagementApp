@@ -8,19 +8,21 @@ namespace InventoryManagement
 {
     public class UnitConstants
     {
+        public const float pcs = 1;
+
         // By weight
-        public const double gram = 0.001;
-        public const double kg = 1000;
+        public const float gram = 1;
+        public const float kg = 1000;
 
         // By volume
-        public const double teaspoon = 0.005;
-        public const double tablespoon = 0.015;
-        public const double decilitre = 0.1;
-        public const double litre = 1;
+        public const float teaspoon = 0.005F;
+        public const float tablespoon = 0.015F;
+        public const float decilitre = 0.1F;
+        public const float litre = 1;
 
         // By length
-        public const double centimeter = 0.01;
-        public const double decimeter = 0.1;
-        public const double meter = 1;
+        public const float centimeter = 0.01F;
+        public const float decimeter = 0.1F;
+        public const float meter = 1;
     }
 }
