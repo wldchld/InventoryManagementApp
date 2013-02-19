@@ -2,7 +2,7 @@
 -- Author:        ville
 -- Caption:       New Model
 -- Project:       Name of the project
--- Changed:       2013-02-19 11:16
+-- Changed:       2013-02-19 14:11
 -- Created:       2013-02-11 19:44
 PRAGMA foreign_keys = OFF;
 
@@ -20,41 +20,23 @@ CREATE TABLE "Recipe"(
   "RecipeID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "RecipeName" VARCHAR(45)
 );
-CREATE TABLE "MaterialGroup"(
-  "MaterialGroupID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "Name" VARCHAR(45)
-);
-CREATE TABLE "ExtraFields"(
-  "RecID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "FieldName" VARCHAR(45) NOT NULL,
-  "FieldType" INTEGER NOT NULL,
-  "StringExtra" VARCHAR(45),
-  "FloatExtra" FLOAT,
-  "DateExtra" DATE,
-  "MaterialGroupID" INTEGER NOT NULL,
-  CONSTRAINT "fk_ExtraFields_MaterialType1"
-    FOREIGN KEY("MaterialGroupID")
-    REFERENCES "MaterialGroup"("MaterialGroupID")
-);
-CREATE INDEX "ExtraFields.fk_ExtraFields_MaterialType1_idx" ON "ExtraFields"("MaterialGroupID");
 CREATE TABLE "ShoppingList"(
   "ShoppingLIstID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "ShoppingListName" VARCHAR(45) NOT NULL
 );
 CREATE TABLE "Material"(
   "MaterialID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "MaterialName" VARCHAR(45),
+  "MaterialName" VARCHAR(45) NOT NULL,
   "UnitID" INTEGER NOT NULL,
-  "MaterialGroupID" INTEGER NOT NULL,
+  "Group" VARCHAR(45) NOT NULL,
+  "Infinite" BOOLEAN NOT NULL,
+  "Info" VARCHAR(200),
+  "Date" DATE,
   CONSTRAINT "fk_Material_Unit1"
     FOREIGN KEY("UnitID")
-    REFERENCES "Unit"("UnitID"),
-  CONSTRAINT "fk_Material_table11"
-    FOREIGN KEY("MaterialGroupID")
-    REFERENCES "MaterialGroup"("MaterialGroupID")
+    REFERENCES "Unit"("UnitID")
 );
 CREATE INDEX "Material.fk_Material_Unit1_idx" ON "Material"("UnitID");
-CREATE INDEX "Material.fk_Material_table11_idx" ON "Material"("MaterialGroupID");
 CREATE TABLE "Inventory"(
   "RecID" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "Amount" INTEGER NOT NULL,
