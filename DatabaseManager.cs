@@ -16,13 +16,15 @@ namespace InventoryManagement
             db = new SQLiteDatabase();
         }
 
-        public void addNewMaterial(String name, float quantity, InventoryManagement.Material.MeasureType mType, String group)
+        public void addNewMaterial(String name, float quantity, String groupName, int unitID)
         {
             Dictionary<String, String> data = new Dictionary<String, String>();
             data.Add("MaterialName", name);
             data.Add("Quantity", quantity.ToString());
-            data.Add("MeasureType", ((int) mType).ToString());
-            data.Add("MaterialType", "");
+            /*
+            data.Add("MaterialGroupID", );
+            data.Add("UnitID", unitID.ToString);
+             */
             try
             {
                 db.Insert("Material", data);
